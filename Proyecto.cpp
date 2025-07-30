@@ -14,14 +14,14 @@ struct Cita {
 };
 
 void cargarDoctores(int *contador, Doctor *medicos) {
+    // Extrae los datos de los doctores desde un archivo
+    // y los almacena en el arreglo de estructuras medicos.
     ifstream archivoDoctores("Doctores.txt");
-    while (getline(archivoDoctores, medicos[*contador].nombre, '|') &&
-           getline(archivoDoctores, medicos[*contador].especialidad)) {
+    getline(archivoDoctores, medicos[*contador].nombre);
         (*contador)++;
-    }
     archivoDoctores.close();
 }
-/*linea de codigo de prueba*/
+
 int main() {
     Doctor doctores[100];
     int contador = 0;
