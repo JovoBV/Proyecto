@@ -35,7 +35,7 @@ void Menu(){
 
 
 }
-
+/*linea de codigo de prueba*/
 int main() {
     cout<< "HOSPITAL DEL Jonmar Vallejo/Jomaro Vallejo" << endl;
     
