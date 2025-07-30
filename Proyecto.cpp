@@ -21,7 +21,7 @@ void cargarDoctores(int *contador, Doctor *medicos) {
     }
     archivoDoctores.close();
 }
-
+/*linea de codigo de prueba*/
 int main() {
     Doctor doctores[100];
     int contador = 0;
