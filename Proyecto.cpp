@@ -1,43 +1,38 @@
-#include<iostream>
-#include<string.h>
+#include <iostream>
+#include <string>
+#include <fstream>
 using namespace std;
 
 struct Doctor {
-    int id;
     string nombre;
     string especialidad;
 };
 struct Cita {
-    int id;
     string paciente;
     string fecha;
     string hora;
-    int doctorId;
 };
 
-
-
-void Menu(){
-    int opcion;
-     cout << "Seleccione una opción: ";
-        cin >> opcion;
-    do {
- switch(opcion) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            default:
-        }
-    } while(opcion != 3);
-
-
+void cargarDoctores(int *contador, Doctor *medicos) {
+    ifstream archivoDoctores("Doctores.txt");
+    while (getline(archivoDoctores, medicos[*contador].nombre, '|') &&
+           getline(archivoDoctores, medicos[*contador].especialidad)) {
+        (*contador)++;
+    }
+    archivoDoctores.close();
 }
 
 int main() {
-    cout<< "HOSPITAL DEL Jonmar Vallejo/Jomaro Vallejo" << endl;
-    
+    Doctor doctores[100];
+    int contador = 0;
+
+    cout << "HOSPITAL DEL Jonmar Vallejo/Jomaro Vallejo" << endl;
+    cargarDoctores(&contador, doctores);
+    cout << "Doctores" << endl;
+
+    for (int i = 0; i < contador; i++) {
+        cout << doctores[i].nombre << " - " << doctores[i].especialidad << endl;
+    }
+
     return 0;
 }
