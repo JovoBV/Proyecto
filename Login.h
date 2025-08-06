@@ -1,45 +1,42 @@
+
 #ifndef LOGIN_H  
 #define LOGIN_H
+
 #include <iostream>
 #include <string>
-#include <fstream>
+#include "Datos.h"  
+
 using namespace std;
 
 int login() {
-    string MAX_CEDULA;
-    bool login_exitoso = false;  // Para saber si el login fue exitoso
+    const int MAX_USUARIOS = 100;
+    Usuario lista[MAX_USUARIOS];
+    int total_usuarios = leer(lista, MAX_USUARIOS);
 
-    // Ciclo repetitivo
+    if (total_usuarios == 0) {
+        cout << "Error al cargar credenciales." << endl;
+        return 0;
+    }
+
+    string MAX_CEDULA;
+    bool login_exitoso = false;
+
     while (!login_exitoso) {
         cout << "Cedula: ";
-        getline(cin, MAX_CEDULA);  // Leer la cédula ingresada por el usuario
+        getline(cin, MAX_CEDULA);
 
-        ifstream leer("Credenciales.txt");  // Abrir el archivo de credenciales
-        if (!leer) {
-            cout << "No se pudo abrir el archivo de credenciales." << endl;
-            return 0;  // Indicar error si no se puede abrir el archivo
-        }
-
-        string datorecuperacion;
-        // Leer cada línea del archivo
-        while (getline(leer, datorecuperacion)) {
-            // Comparar la cédula del archivo con la ingresada por el usuario
-            if (MAX_CEDULA == datorecuperacion) {
-                login_exitoso = true;  // Si encuentra el usuario, termina el ciclo
-                break;
+        for (int i = 0; i < total_usuarios; i++) {
+            if (lista[i].cedula == MAX_CEDULA) {
+                cout << "Login exitoso" << endl;
+                cout << "Bienvenido, " << lista[i].nombre << " " << lista[i].apellido << "." << endl;
+                return 1;
             }
         }
 
-        leer.close();
-
-        if (!login_exitoso) {
-            cout << "Usuario no encontrado. Intente nuevamente." << endl;
-            cout << "Verifique si la cedula ingresada es la correcta." << endl;
-        }
+        cout << "Usuario no encontrado. Intente nuevamente." << endl;
     }
 
-    cout << "Login exitoso!" << endl;
-    return 1;  // Indicar éxito
+    return 0;
 }
 
-#endif  
+#endif
