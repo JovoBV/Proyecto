@@ -6,5 +6,5 @@ Miguel Torres Neurología
 Laura Jiménez Neurología
 Diego Herrera Dermatología
 Isabel Castro Dermatología
-Ricardo Flores Medicina General
-Valentina Silva Medicina General
+Ricardo Flores MedicinaGeneral
+Valentina Silva MedicinaGeneral

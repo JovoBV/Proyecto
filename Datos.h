@@ -60,7 +60,7 @@ int leer1(Doctores* medicos, int cantidad) {
         if (partes >= 2) {
             medicos[pos1].nombre = resultado1[0];
             medicos[pos1].apellido = resultado1[1];
-            medicos[pos1].especialidad = (partes >= 3) ? resultado1[2] : "";
+            medicos[pos1].especialidad=resultado1[2];
             pos1++;
         }
     }

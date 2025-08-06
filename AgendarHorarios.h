@@ -22,6 +22,7 @@ void horarios(int casoEspecialidad) {
     do {
         cout << "Seleccione el dia para agendar la cita\n";
         cout << "1. Lunes / 2. Martes / 3. Miercoles / 4. Jueves / 5. Viernes" << endl;
+        cout << "Seleccione un dia (1-5): ";
         cin >> dia;
         if (dia < 1 || dia > 5) {
             cout << "Opcion no valida. Intente de nuevo." << endl;
@@ -34,16 +35,22 @@ void horarios(int casoEspecialidad) {
     if (total_Doctores == 0) {
         cout << "Error al cargar los doctores." << endl;
     }
-
+    int aux=1;
+    int docDiscponible[2];
     for (int i = 0; i < total_Doctores; i++) {
         if (
             (casoEspecialidad == 1 && medicos[i].especialidad == "Cardiología") ||
             (casoEspecialidad == 2 && medicos[i].especialidad == "Pediatría") ||
             (casoEspecialidad == 3 && medicos[i].especialidad == "Neurología") ||
             (casoEspecialidad == 4 && medicos[i].especialidad == "Dermatología") ||
-            (casoEspecialidad == 5 && medicos[i].especialidad == "Medicina General")
+            (casoEspecialidad == 5 && medicos[i].especialidad == "MedicinaGeneral")
         ) {
-            cout <<i+1<<". "<<"Doctor disponible: " << medicos[i].nombre << " " << medicos[i].apellido << endl;
+            cout <<aux<<". "<<"Doctor disponible: " << medicos[i].nombre << " " << medicos[i].apellido << endl;
+            aux++;
+            for (int j = 0; j < 2; j++){
+               docDiscponible[j] = i;
+            }
+    
         }
     }
     do {
@@ -71,9 +78,16 @@ void horarios(int casoEspecialidad) {
     if (opcion < 1 || opcion > 7) {
         cout << "Opcion no valida. Intente de nuevo." << endl;
     } } while (opcion < 1 || opcion > 7);
-    cout << "Cita agendada con el Dr. " << medicos[medico - 1].nombre << " " << medicos[medico - 1].apellido 
-         << " el dia " << dia << "/" << mes << "/" << anio 
-         << " a las " << (opcion + 8) % 12 + 9 << ":00 " 
-         << ((opcion + 8) / 12 == 0 ? "AM" : "PM") << endl;
+    
+    string horarios[] = {
+        "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
+        "02:00 PM", "03:00 PM", "04:00 PM"
+    };
+
+    cout << "Cita agendada con el Dr. "
+         << medicos[docDiscponible[medico-2]].nombre << " "
+         << medicos[docDiscponible[medico-2]].apellido
+         << " el dia " << dia << "/" << mes << "/" << anio
+         << " a las " << horarios[opcion-1] << endl;
 }
 #endif
