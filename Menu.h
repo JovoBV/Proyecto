@@ -2,6 +2,8 @@
 #define Menu_H
 #include <iostream>
 #include <string>
+using namespace std;
+
 void menu(){
 int opcion;
     do {
