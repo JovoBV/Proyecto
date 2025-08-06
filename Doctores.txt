@@ -1,20 +1,10 @@
-Juan Pérez|Cardiología
-María López|Cardiología
-Carlos Gómez|Cardiología
-Ana Martínez|Cardiología
-Luis Fernández|Pediatría
-Sofía Rodríguez|Pediatría
-Andrés Sánchez|Pediatría
-Elena Morales|Pediatría
-Miguel Torres|Neurología
-Laura Jiménez|Neurología
-Javier Ruiz|Neurología
-Carla Díaz|Neurología
-Diego Herrera|Dermatología
-Isabel Castro|Dermatología
-Pablo Navarro|Dermatología
-Natalia Vega|Dermatología
-Ricardo Flores|Medicina General
-Valentina Silva|Medicina General
-Fernando Rojas|Medicina General
-Gabriela Ortiz|Medicina General
+Juan Pérez Cardiología
+María López Cardiología
+Luis Fernández Pediatría
+Sofía Rodríguez Pediatría
+Miguel Torres Neurología
+Laura Jiménez Neurología
+Diego Herrera Dermatología
+Isabel Castro Dermatología
+Ricardo Flores Medicina General
+Valentina Silva Medicina General

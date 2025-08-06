@@ -2,6 +2,7 @@
 #define Menu_H
 #include <iostream>
 #include <string>
+#include "AgendarCita.h"
 using namespace std;
 void menu(){
 int opcion;
@@ -16,7 +17,7 @@ int opcion;
 
         switch (opcion) {
             case 1:
-            // Agendar una cita
+            agendarEspecialidad();
                 break;
             case 2:
             // Ver cita agendada
@@ -25,7 +26,8 @@ int opcion;
             // Cancelar cita
                 break;
             case 4:
-            // Salir del programa
+            cout << "Saliendo del sistema..." << endl;
+            cout << "Gracias por usar el sistema de citas medicas." << endl;
                 break;
             default:
                 cout << "Opcion no valida. Intente de nuevo." << endl;

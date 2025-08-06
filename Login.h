@@ -1,4 +1,3 @@
-
 #ifndef LOGIN_H  
 #define LOGIN_H
 
@@ -8,14 +7,14 @@
 
 using namespace std;
 
-int login() {
+bool login() {
     const int MAX_USUARIOS = 100;
     Usuario lista[MAX_USUARIOS];
     int total_usuarios = leer(lista, MAX_USUARIOS);
 
     if (total_usuarios == 0) {
         cout << "Error al cargar credenciales." << endl;
-        return 0;
+        return false;
     }
 
     string MAX_CEDULA;
@@ -29,14 +28,14 @@ int login() {
             if (lista[i].cedula == MAX_CEDULA) {
                 cout << "Login exitoso" << endl;
                 cout << "Bienvenido, " << lista[i].nombre << " " << lista[i].apellido << "." << endl;
-                return 1;
+                return true;
             }
         }
 
         cout << "Usuario no encontrado. Intente nuevamente." << endl;
     }
     
-    return 0;
+    return false;
 }
 
 #endif
