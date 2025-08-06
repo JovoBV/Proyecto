@@ -1,0 +1,34 @@
+#ifndef Menu_H
+#define Menu_H
+#include <iostream>
+#include <string>
+void menu(){
+int opcion;
+    do {
+        cout << "--- Agenda de Citas Medicas ---" << endl;
+        cout << "1. Agendar una cita" << endl;
+        cout << "2. Ver cita agendada" << endl;
+        cout << "3. Cancelar cita" << endl;
+        cout << "4. Salir" << endl;
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+            // Agendar una cita
+                break;
+            case 2:
+            // Ver cita agendada
+                break;
+            case 3:
+            // Cancelar cita
+                break;
+            case 4:
+            // Salir del programa
+                break;
+            default:
+                cout << "Opcion no valida. Intente de nuevo." << endl;
+        }
+    } while (opcion != 4);
+}
+#endif 
