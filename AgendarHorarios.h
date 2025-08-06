@@ -8,7 +8,8 @@
 #include "Datos.h"         
 using namespace std;
 
-void horarios() {
+
+void horarios(int casoEspecialidad) {
     time_t rawtime;
     struct tm* timeinfo;
     time(&rawtime);                  
@@ -34,8 +35,6 @@ void horarios() {
         cout << "Error al cargar los doctores." << endl;
     }
 
-    int casoEspecialidad = agendarEspecialidad();
-
     for (int i = 0; i < total_Doctores; i++) {
         if (
             (casoEspecialidad == 1 && medicos[i].especialidad == "Cardiología") ||
@@ -47,12 +46,13 @@ void horarios() {
             cout <<i+1<<". "<<"Doctor disponible: " << medicos[i].nombre << " " << medicos[i].apellido << endl;
         }
     }
-    do{
+    do {
     cout << "Seleccione el doctor: ";
     cin >> medico;
-    if (medico < 1 || medico > 2) {
-        cout << "Opcion no valida. Intente de nuevo." << endl;
-     } } while (medico < 1 || medico > 2);
+        if (medico < 1 || medico > 2) {
+            cout << "Opcion no valida. Intente de nuevo." << endl;
+        } 
+    } while (medico < 1 || medico > 2);
     
     int opcion;
     cout << "Fecha : " << dia << "/" << mes << "/" << anio << endl;

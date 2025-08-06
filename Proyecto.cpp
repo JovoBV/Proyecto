@@ -9,7 +9,7 @@ int main() {
     cout << "          Hospital Jomaro Vallejo             " << endl;
     cout << "...............Bienvenido.................." << endl;
     cout << "Ingrese su Numero de Cedula para Empezar" << endl;
-    if (login()==true) {
+    if (login()) {
         menu();
     }
 

@@ -6,11 +6,12 @@
 using namespace std;
 
 int agendarEspecialidad();  // Declaración previa
-
+void horarios();  // Declaración previa
+// Función para agendar una cita médica
 int agendarEspecialidad() {
     int opc;
     cout<<"Seleccione La Especialidad "<<endl;
-    do {
+    //do {
         cout << "--- Especialidades ---" << endl;
         cout << "1. Cardiología" << endl;
         cout << "2. Pediatría" << endl;
@@ -22,24 +23,24 @@ int agendarEspecialidad() {
 
         switch (opc) {
             case 1:
-            horarios();
+            horarios(opc);
                 break;
             case 2:
-            horarios();
+            horarios(opc);
                 break;
             case 3:
-            horarios();
+            horarios(opc);
                 break;
             case 4:
-            horarios();
+            horarios(opc);
                 break;
             case 5:
-            horarios();
+            horarios(opc);
                 break;
             default:
                 cout << "Opcion no valida. Intente de nuevo." << endl;
         }
-    } while (opc != 4);
+    //} while (opc != 4); 
     return opc;
 }
 #endif
