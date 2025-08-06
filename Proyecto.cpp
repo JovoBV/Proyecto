@@ -17,25 +17,6 @@ struct Usuario {
 };
 
 
- void lee(Usuario* leidos) {
-    ifstream leer("misdatos.txt");
-    string datorecu;
-    int pos = 0;
-    string resultado[3];
-
-    while (getline(leer, datorecu)) {
-        cout << datorecu << endl;
-        Split(datorecu, ' ', resultado);
-        leidos[pos].cedula = resultado[0];
-        leidos[pos].nombre = resultado[1];
-        leidos[pos].apellido = resultado[2];
-        pos++;
-    }
-    leer.close();
-}
-
-
-
 int main() {
      cout << "          Hospital Jomaro Vallejo             " << endl;
      cout << "...............Bienvenido.................." << endl;
