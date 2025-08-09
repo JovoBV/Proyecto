@@ -46,10 +46,10 @@ void horarios(int casoEspecialidad, cita *nuevaCita) {
     int docDiscponible[2];
     for (int i = 0; i < total_Doctores; i++) {
         if (
-            (casoEspecialidad == 1 && medicos[i].especialidad == "Cardiología") ||
-            (casoEspecialidad == 2 && medicos[i].especialidad == "Pediatría") ||
-            (casoEspecialidad == 3 && medicos[i].especialidad == "Neurología") ||
-            (casoEspecialidad == 4 && medicos[i].especialidad == "Dermatología") ||
+            (casoEspecialidad == 1 && medicos[i].especialidad == "Cardiologia") ||
+            (casoEspecialidad == 2 && medicos[i].especialidad == "Pediatria") ||
+            (casoEspecialidad == 3 && medicos[i].especialidad == "Neurologia") ||
+            (casoEspecialidad == 4 && medicos[i].especialidad == "Dermatologia") ||
             (casoEspecialidad == 5 && medicos[i].especialidad == "MedicinaGeneral")
         ) {
             cout <<aux<<". "<<"Doctor disponible: " << medicos[i].nombre << " " << medicos[i].apellido << endl;
