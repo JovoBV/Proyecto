@@ -4,15 +4,8 @@
 #include <string>
 #include <fstream>
 #include "agendarhorarios.h"
-using namespace std;
 
-struct cita {
-    int dia;
-    int mes;
-    int anio;
-    string hora;
-    string doctor;
-};
+using namespace std;
 
 // Función para agendar una cita médica
 void agendarEspecialidad(cita *nuevaCita) {
@@ -33,7 +26,7 @@ void agendarEspecialidad(cita *nuevaCita) {
         } 
         } while (opc < 1 || opc > 5);
     
-    horarios(opc, &nuevaCita);
+    horarios(opc, nuevaCita);
 }
 
 void agendarCita() {
@@ -42,10 +35,9 @@ void agendarCita() {
     agendarEspecialidad(&nuevaCita);
     ofstream archivo("citas.txt", ios::app);
     if (archivo.is_open()) {
-        archivo << "Cita agendada: "
-                << nuevaCita.dia << "/" << nuevaCita.mes << "/" << nuevaCita.anio
-                << " a las " << nuevaCita.hora
-                << " con el Dr. " << nuevaCita.doctor << endl;
+        archivo << nuevaCita.dia << "," << nuevaCita.mes << "," << nuevaCita.anio
+                << "," << nuevaCita.hora
+                << "," << nuevaCita.doctor << endl;
         archivo.close();
         cout << "Cita agendada exitosamente." << endl;
     } else {

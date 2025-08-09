@@ -19,6 +19,14 @@ struct Doctores {
     string especialidad;
 };
 
+struct cita {
+    int dia;
+    int mes;
+    int anio;
+    std::string hora;
+    std::string doctor;
+};
+
 int leer(Usuario* leidos, int cantidad) {
     ifstream archivo("Credenciales.txt");
     if (!archivo) {

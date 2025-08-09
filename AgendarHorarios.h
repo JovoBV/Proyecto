@@ -4,7 +4,7 @@
 #include <iostream>
 #include <ctime>
 #include <string>
-#include "AgendarCita.h"  
+#include "AgendarCita.h"
 #include "Datos.h"       
 #include "Calendario.h" 
 
@@ -22,7 +22,13 @@ void horarios(int casoEspecialidad, cita *nuevaCita) {
     int dia;
     int mes = timeinfo->tm_mon + 1;   
     int anio = timeinfo->tm_year + 1900; 
+    string horarios[] = {
+        "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
+        "02:00 PM", "03:00 PM", "04:00 PM"
+    };
+
     mostrarCalendario(diaP, &diasMes);
+
     do {
         cout << "Seleccione el dia para agendar la cita:";
         cin >> dia;
@@ -65,26 +71,18 @@ void horarios(int casoEspecialidad, cita *nuevaCita) {
     int opcion;
     cout << "Fecha : " << dia << "/" << mes << "/" << anio << endl;
     cout << "Horarios disponibles: " << endl;
-    cout << "1. 09:00 AM" << endl;
-    cout << "2. 10:00 AM" << endl;
-    cout << "3. 11:00 AM" << endl;
-    cout << "4. 12:00 AM" << endl;
-    cout << "5. 02:00 PM" << endl;
-    cout << "6. 03:00 PM" << endl;
-    cout << "7. 04:00 PM" << endl;
-    do
-    {
+    for (int i = 0; i < 7; i++) {
+        cout << i + 1 << ". " << horarios[i] << endl;
+    }
+
+    do {
     cout << "Seleccione un horario (1-7): ";
     cin >> opcion;
     if (opcion < 1 || opcion > 7) {
         cout << "Opcion no valida. Intente de nuevo." << endl;
     } } while (opcion < 1 || opcion > 7);
     
-    string horarios[] = {
-        "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
-        "02:00 PM", "03:00 PM", "04:00 PM"
-    };
-
+    
     cout << "Cita agendada con el Dr. "
         << medicos[docDiscponible[medico-2]].nombre << " "
         << medicos[docDiscponible[medico-2]].apellido
@@ -96,6 +94,5 @@ void horarios(int casoEspecialidad, cita *nuevaCita) {
     nuevaCita->anio = anio;
     nuevaCita->hora = horarios[opcion-1];
     nuevaCita->doctor = medicos[docDiscponible[medico-2]].nombre + " " + medicos[docDiscponible[medico-2]].apellido;
-    cout << "Cita agendada exitosamente." << endl;
 }
 #endif
