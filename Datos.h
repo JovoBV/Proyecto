@@ -19,7 +19,7 @@ struct Doctores {
     string especialidad;
 };
 
-struct cita {
+struct Cita {
     int dia;
     int mes;
     int anio;

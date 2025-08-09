@@ -11,7 +11,7 @@
 using namespace std;
 
 
-void horarios(int casoEspecialidad, cita *nuevaCita) {
+void horarios(int casoEspecialidad, Cita *nuevaCita) {
     int diasMes;
     time_t rawtime;
     struct tm* timeinfo;
@@ -42,24 +42,38 @@ void horarios(int casoEspecialidad, cita *nuevaCita) {
     if (total_Doctores == 0) {
         cout << "Error al cargar los doctores." << endl;
     }
-    int aux=1;
-    int docDiscponible[2];
-    for (int i = 0; i < total_Doctores; i++) {
-        if (
-            (casoEspecialidad == 1 && medicos[i].especialidad == "Cardiologia") ||
-            (casoEspecialidad == 2 && medicos[i].especialidad == "Pediatria") ||
-            (casoEspecialidad == 3 && medicos[i].especialidad == "Neurologia") ||
-            (casoEspecialidad == 4 && medicos[i].especialidad == "Dermatologia") ||
-            (casoEspecialidad == 5 && medicos[i].especialidad == "MedicinaGeneral")
-        ) {
-            cout <<aux<<". "<<"Doctor disponible: " << medicos[i].nombre << " " << medicos[i].apellido << endl;
-            aux++;
-            for (int j = 0; j < 2; j++){
-                docDiscponible[j] = i;
-            }
     
+    int docDiscponible[2];
+    string especialidades[] = {
+        "Cardiologia", "Pediatria", "Neurologia", "Dermatologia", "MedicinaGeneral"
+    };
+
+    if (casoEspecialidad >= 1 && casoEspecialidad <= 5) {
+        int aux = 0, aux2 = 0;
+        string especialidadDoc = especialidades[casoEspecialidad - 1]; // Ajustamos el índice
+        
+        cout << "Doctores disponibles en " << especialidadDoc << ":" << endl;
+        
+        bool hayDoctoresDisponibles = false;
+        
+        for (int i = 0; i < total_Doctores; i++) {
+            if (medicos[i].especialidad == especialidadDoc) {
+                cout << aux2 + 1 << ". " << medicos[i].nombre << " " << medicos[i].apellido << endl;
+                hayDoctoresDisponibles = true;
+                docDiscponible[aux] = i; // Guardamos el índice del doctor disponible
+                aux++;
+                aux2++;
+            }
         }
-    }
+        
+        if (!hayDoctoresDisponibles) {
+            cout << "No hay doctores disponibles en esta especialidad." << endl;
+        }
+        } else {
+        cout << "Especialidad no válida." << endl;
+        }
+        
+    
     do {
     cout << "Seleccione el doctor: ";
     cin >> medico;
@@ -84,8 +98,8 @@ void horarios(int casoEspecialidad, cita *nuevaCita) {
     
     
     cout << "Cita agendada con el Dr. "
-        << medicos[docDiscponible[medico-2]].nombre << " "
-        << medicos[docDiscponible[medico-2]].apellido
+        << medicos[docDiscponible[medico-1]].nombre << " "
+        << medicos[docDiscponible[medico-1]].apellido
         << " el dia " << dia << "/" << mes << "/" << anio
         << " a las " << horarios[opcion-1] << endl;
 
@@ -93,6 +107,6 @@ void horarios(int casoEspecialidad, cita *nuevaCita) {
     nuevaCita->mes = mes;
     nuevaCita->anio = anio;
     nuevaCita->hora = horarios[opcion-1];
-    nuevaCita->doctor = medicos[docDiscponible[medico-2]].nombre + " " + medicos[docDiscponible[medico-2]].apellido;
+    nuevaCita->doctor = medicos[docDiscponible[medico-1]].nombre + " " + medicos[docDiscponible[medico-1]].apellido;
 }
 #endif

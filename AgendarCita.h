@@ -8,7 +8,7 @@
 using namespace std;
 
 // Función para agendar una cita médica
-void agendarEspecialidad(cita *nuevaCita) {
+void agendarEspecialidad(Cita *nuevaCita) {
 
     int opc;
         do {
@@ -30,10 +30,10 @@ void agendarEspecialidad(cita *nuevaCita) {
 }
 
 void agendarCita(string id) {
-    cita nuevaCita;
+    Cita nuevaCita;
 
     agendarEspecialidad(&nuevaCita);
-    ofstream archivo("citas.txt", ios::app);
+    ofstream archivo("RegistroCitas.txt", ios::app);
     if (archivo.is_open()) {
         archivo << nuevaCita.dia << "," << nuevaCita.mes << "," << nuevaCita.anio
                 << "," << nuevaCita.hora
