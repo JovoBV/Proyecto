@@ -17,7 +17,7 @@ int opcion;
 
         switch (opcion) {
             case 1:
-            agendarEspecialidad();
+            agendarCita();
                 break;
             case 2:
             // Ver cita agendada

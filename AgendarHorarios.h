@@ -11,7 +11,7 @@
 using namespace std;
 
 
-void horarios(int casoEspecialidad) {
+void horarios(int casoEspecialidad, cita *nuevaCita) {
     int diasMes;
     time_t rawtime;
     struct tm* timeinfo;
@@ -90,5 +90,12 @@ void horarios(int casoEspecialidad) {
         << medicos[docDiscponible[medico-2]].apellido
         << " el dia " << dia << "/" << mes << "/" << anio
         << " a las " << horarios[opcion-1] << endl;
+
+    nuevaCita->dia = dia;
+    nuevaCita->mes = mes;
+    nuevaCita->anio = anio;
+    nuevaCita->hora = horarios[opcion-1];
+    nuevaCita->doctor = medicos[docDiscponible[medico-2]].nombre + " " + medicos[docDiscponible[medico-2]].apellido;
+    cout << "Cita agendada exitosamente." << endl;
 }
 #endif
