@@ -5,30 +5,31 @@
 #include <ctime>
 #include <string>
 #include "AgendarCita.h"  
-#include "Datos.h"         
+#include "Datos.h"       
+#include "Calendario.h" 
+
 using namespace std;
 
 
 void horarios(int casoEspecialidad) {
+    int diasMes;
     time_t rawtime;
     struct tm* timeinfo;
     time(&rawtime);                  
     timeinfo = localtime(&rawtime);  
     int medico=0;
-    int dia = 0;
+    int diaP = timeinfo->tm_mday;
+    int dia;
     int mes = timeinfo->tm_mon + 1;   
     int anio = timeinfo->tm_year + 1900; 
-
+    mostrarCalendario(diaP, &diasMes);
     do {
-        cout << "Seleccione el dia para agendar la cita\n";
-        cout << "1. Lunes / 2. Martes / 3. Miercoles / 4. Jueves / 5. Viernes" << endl;
-        cout << "Seleccione un dia (1-5): ";
+        cout << "Seleccione el dia para agendar la cita:";
         cin >> dia;
-        if (dia < 1 || dia > 5) {
-            cout << "Opcion no valida. Intente de nuevo." << endl;
-        }
-    } while (dia < 1 || dia > 5);
-
+        if (dia < 1 || dia > diasMes) cout << "Opcion no valida. Intente de nuevo." << endl;
+        if (dia < diaP) cout << "No se puede agendar una cita en el pasado. Intente de nuevo." << endl;
+    } while (dia < 1 || dia > diasMes || dia < diaP);
+    
     const int MAX_DOCTORES = 10;
     Doctores medicos[MAX_DOCTORES];
     int total_Doctores = leer1(medicos, MAX_DOCTORES);
@@ -48,7 +49,7 @@ void horarios(int casoEspecialidad) {
             cout <<aux<<". "<<"Doctor disponible: " << medicos[i].nombre << " " << medicos[i].apellido << endl;
             aux++;
             for (int j = 0; j < 2; j++){
-               docDiscponible[j] = i;
+                docDiscponible[j] = i;
             }
     
         }
@@ -67,7 +68,7 @@ void horarios(int casoEspecialidad) {
     cout << "1. 09:00 AM" << endl;
     cout << "2. 10:00 AM" << endl;
     cout << "3. 11:00 AM" << endl;
-    cout << "4. 12:00 PM" << endl;
+    cout << "4. 12:00 AM" << endl;
     cout << "5. 02:00 PM" << endl;
     cout << "6. 03:00 PM" << endl;
     cout << "7. 04:00 PM" << endl;
@@ -85,9 +86,9 @@ void horarios(int casoEspecialidad) {
     };
 
     cout << "Cita agendada con el Dr. "
-         << medicos[docDiscponible[medico-2]].nombre << " "
-         << medicos[docDiscponible[medico-2]].apellido
-         << " el dia " << dia << "/" << mes << "/" << anio
-         << " a las " << horarios[opcion-1] << endl;
+        << medicos[docDiscponible[medico-2]].nombre << " "
+        << medicos[docDiscponible[medico-2]].apellido
+        << " el dia " << dia << "/" << mes << "/" << anio
+        << " a las " << horarios[opcion-1] << endl;
 }
 #endif

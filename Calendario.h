@@ -5,7 +5,7 @@
 #include <ctime>
 using namespace std;
 
-void mostrarCalendario() {
+void mostrarCalendario(int day, int *diasMes) {
     time_t rawtime;
     struct tm* timeinfo;
     time(&rawtime);                  
@@ -51,10 +51,18 @@ void mostrarCalendario() {
         cout << "   ";
 
     // Imprimir días
-    for (int day = 1; day <= days_in_month[mes-1]; day++) {
-        cout << (day < 10 ? " " : "") << day << " ";
-        if ((day_of_week + day) % 7 == 0 || day == days_in_month[mes-1])
+    for (int d = 1; d <= days_in_month[mes-1]; d++) {
+        // Resaltar el día actual
+        if (d == day) {
+            cout << "[" << (d < 10 ? " " : "") << d << "]";
+        } else {
+            cout << (d < 10 ? " " : "") << d << " ";
+        }
+        
+        if ((day_of_week + d - 1) % 7 == 6 || d == days_in_month[mes-1])
             cout << "\n";
     }
+
+    *diasMes = days_in_month[mes-1];
 }
 #endif
