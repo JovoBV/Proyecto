@@ -4,7 +4,7 @@
 #include <string>
 #include "AgendarCita.h"
 using namespace std;
-void menu(){
+void menu(string id){
 int opcion;
     do {
         cout << "--- Agenda de Citas Medicas ---" << endl;
@@ -17,7 +17,7 @@ int opcion;
 
         switch (opcion) {
             case 1:
-            agendarCita();
+            agendarCita(id);
                 break;
             case 2:
             // Ver cita agendada

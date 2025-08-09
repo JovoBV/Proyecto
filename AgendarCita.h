@@ -29,7 +29,7 @@ void agendarEspecialidad(cita *nuevaCita) {
     horarios(opc, nuevaCita);
 }
 
-void agendarCita() {
+void agendarCita(string id) {
     cita nuevaCita;
 
     agendarEspecialidad(&nuevaCita);
@@ -37,7 +37,8 @@ void agendarCita() {
     if (archivo.is_open()) {
         archivo << nuevaCita.dia << "," << nuevaCita.mes << "," << nuevaCita.anio
                 << "," << nuevaCita.hora
-                << "," << nuevaCita.doctor << endl;
+                << "," << nuevaCita.doctor 
+                << "," << id << endl;
         archivo.close();
         cout << "Cita agendada exitosamente." << endl;
     } else {

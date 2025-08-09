@@ -23,8 +23,9 @@ struct cita {
     int dia;
     int mes;
     int anio;
-    std::string hora;
-    std::string doctor;
+    string hora;
+    string doctor;
+    string cedula;
 };
 
 int leer(Usuario* leidos, int cantidad) {
