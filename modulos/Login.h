@@ -18,7 +18,7 @@ bool login(string *id) {
     cout << "Cedula: ";
     cin >> cedula;
 
-    ifstream archivo("Credenciales.txt");
+    ifstream archivo("archivos/Credenciales.txt");
     if (!archivo) {
         cout << "No se pudo abrir el archivo de credenciales." << endl;
         return false;
@@ -51,7 +51,7 @@ bool login(string *id) {
             cin >> nuevo.nombre;
             cout << "Ingrese su apellido: ";
             cin >> nuevo.apellido;
-            ofstream archivo_out("Credenciales.txt", ios::app);
+            ofstream archivo_out("archivos/Credenciales.txt", ios::app);
             if (archivo_out) {
                 archivo_out << nuevo.cedula << "," << nuevo.nombre << "," << nuevo.apellido << endl;
                 archivo_out.close();

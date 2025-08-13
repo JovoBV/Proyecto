@@ -29,7 +29,7 @@ struct Cita {
 };
 
 int leer(Usuario* leidos) {
-    ifstream archivo("Credenciales.txt");
+    ifstream archivo("archivos/Credenciales.txt");
     if (!archivo) {
         cout << "No se pudo abrir el archivo de credenciales." << endl;
         return 0;
@@ -54,7 +54,7 @@ int leer(Usuario* leidos) {
 }
 
 int leerDoc(Doctores* medicos) {
-    ifstream texto("Doctores.txt");
+    ifstream texto("archivos/Doctores.txt");
     if (!texto) {
         cout << "No se pudo abrir el archivo de credenciales." << endl;
         return 0;
@@ -79,7 +79,7 @@ int leerDoc(Doctores* medicos) {
 }
 
 int leerCita(Cita* citas) {
-    ifstream archivo("RegistroCitas.txt");
+    ifstream archivo("archivos/RegistroCitas.txt");
     if (!archivo) {
         cout << "No se pudo abrir el archivo de citas." << endl;
         return 0;

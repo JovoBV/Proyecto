@@ -36,7 +36,7 @@ void agendarCita(string id) {
     char opc;
     agendarEspecialidad(&nuevaCita);
     if (!validarCita(id, nuevaCita)) {
-        ofstream archivo("RegistroCitas.txt", ios::app);
+        ofstream archivo("archivos/RegistroCitas.txt", ios::app);
     if (archivo.is_open()) {
         archivo << nuevaCita.dia << "," << nuevaCita.mes << "," << nuevaCita.anio
                 << "," << nuevaCita.hora

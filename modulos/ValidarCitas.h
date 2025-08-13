@@ -12,9 +12,9 @@
 using namespace std;
 
 bool validarCita(string id, Cita nuevaCita) {
-  int cantidadCitas = leerCita(nullptr);
-  Cita* citasAgendadas = new Cita[cantidadCitas];
-  int citasLeidas = leerCita(citasAgendadas);
+    int cantidadCitas = leerCita(nullptr);
+    Cita* citasAgendadas = new Cita[cantidadCitas];
+    int citasLeidas = leerCita(citasAgendadas);
 
   bool conflicto = false;
     for (int i = 0; i < cantidadCitas; i++) {
