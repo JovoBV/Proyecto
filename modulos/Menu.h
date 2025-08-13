@@ -4,6 +4,7 @@
 #include <string>
 #include "AgendarCita.h"
 #include "MostrarCitas.h"
+#include "Cancelar.h"
 using namespace std;
 void menu(string id){
 
@@ -25,7 +26,7 @@ int opcion;
             mostrarCitas(id);
                 break;
             case 3:
-            // Cancelar cita
+            cancelarCita(id);
                 break;
             case 4:
             cout << "Saliendo del sistema..." << endl;
