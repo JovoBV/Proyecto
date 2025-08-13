@@ -11,7 +11,7 @@ int opcion;
     do {
         cout << "\n\n----------- Agenda de Citas Medicas -----------\n" << endl;
         cout << "1. Agendar una cita" << endl;
-        cout << "2. Ver cita agendada" << endl;
+        cout << "2. Ver citas agendadas" << endl;
         cout << "3. Cancelar cita" << endl;
         cout << "4. Salir\n" << endl;
         cout << "Seleccione una opcion:\n ";

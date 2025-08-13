@@ -25,7 +25,8 @@ void mostrarCitas(string cedula) {
       cout << aux << ". Fecha: " << citasRegistradas[i].dia << "/"
             << citasRegistradas[i].mes << "/" << citasRegistradas[i].anio
             << ", Hora: " << citasRegistradas[i].hora
-            << ", Doctor: " << citasRegistradas[i].doctor << endl;
+            << ", Doctor: " << citasRegistradas[i].doctor
+            << ", Especialidad: " << citasRegistradas[i].especialidad << endl;
       flag = true;
       aux ++;
     } 

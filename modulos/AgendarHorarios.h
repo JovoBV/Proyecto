@@ -107,5 +107,6 @@ void horarios(int casoEspecialidad, Cita *nuevaCita) {
     nuevaCita->anio = anio;
     nuevaCita->hora = horarios[opcion-1];
     nuevaCita->doctor = medicos[docDiscponible[medico-1]].nombre + " " + medicos[docDiscponible[medico-1]].apellido;
+    nuevaCita->especialidad = medicos[docDiscponible[medico-1]].especialidad;
 }
 #endif

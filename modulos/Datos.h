@@ -25,6 +25,7 @@ struct Cita {
     int anio;
     string hora;
     string doctor;
+    string especialidad;
     string cedula;
 };
 
@@ -95,17 +96,18 @@ int leerCita(Cita* citas) {
 
     string datorecu;
     int pos = 0;
-    string resultado[6];
+    string resultado[7];
 
     while (getline(archivo, datorecu)) {
         int partes = Split(datorecu, ',', resultado);
-        if (partes >= 5) {
+        if (partes >= 6) {
             citas[pos].dia = stoi(resultado[0]);
             citas[pos].mes = stoi(resultado[1]);
             citas[pos].anio = stoi(resultado[2]);
             citas[pos].hora = resultado[3];
             citas[pos].doctor = resultado[4];
-            citas[pos].cedula = resultado[5];
+            citas[pos].especialidad = resultado[5];
+            citas[pos].cedula = resultado[6];  
             pos++;
         }
     }

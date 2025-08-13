@@ -40,8 +40,10 @@ void agendarCita(string id) {
     if (archivo.is_open()) {
         archivo << nuevaCita.dia << "," << nuevaCita.mes << "," << nuevaCita.anio
                 << "," << nuevaCita.hora
-                << "," << nuevaCita.doctor 
+                << "," << nuevaCita.doctor
+                << "," << nuevaCita.especialidad
                 << "," << id << endl;
+                
         archivo.close();
         cout << "Cita agendada exitosamente." << endl;
     } else {
