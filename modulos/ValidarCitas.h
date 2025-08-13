@@ -16,7 +16,7 @@ bool validarCita(string id, Cita nuevaCita) {
     Cita* citasAgendadas = new Cita[cantidadCitas];
     int citasLeidas = leerCita(citasAgendadas);
 
-  bool conflicto = false;
+    bool conflicto = false;
     for (int i = 0; i < cantidadCitas; i++) {
         // Mismo doctor en la misma fecha y hora
         if (citasAgendadas[i].dia == nuevaCita.dia &&
