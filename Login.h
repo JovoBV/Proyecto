@@ -11,6 +11,10 @@ using namespace std;
 
 bool login(string *id) {
     string cedula;
+    string nombre, apellido;
+    string linea, resultado[3];
+    bool encontrado = false;
+    
     cout << "Cedula: ";
     cin >> cedula;
 
@@ -19,10 +23,7 @@ bool login(string *id) {
         cout << "No se pudo abrir el archivo de credenciales." << endl;
         return false;
     }
-
-    string linea, resultado[3];
-    bool encontrado = false;
-    string nombre, apellido;
+    
     while (getline(archivo, linea)) {
         int partes = Split(linea, ',', resultado);
         if (partes == 3 && cedula == resultado[0]) {

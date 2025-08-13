@@ -28,7 +28,7 @@ struct Cita {
     string cedula;
 };
 
-int leer(Usuario* leidos, int cantidad) {
+int leer(Usuario* leidos) {
     ifstream archivo("Credenciales.txt");
     if (!archivo) {
         cout << "No se pudo abrir el archivo de credenciales." << endl;
@@ -39,7 +39,7 @@ int leer(Usuario* leidos, int cantidad) {
     int pos = 0;
     string resultado[3];
 
-    while (getline(archivo, datorecu) && pos < cantidad) {
+    while (getline(archivo, datorecu)) {
         int partes = Split(datorecu, ' ', resultado);
         if (partes >= 2) {
             leidos[pos].cedula = resultado[0];
@@ -53,7 +53,7 @@ int leer(Usuario* leidos, int cantidad) {
     return pos;
 }
 
-int leer1(Doctores* medicos, int cantidad) {
+int leerDoc(Doctores* medicos) {
     ifstream texto("Doctores.txt");
     if (!texto) {
         cout << "No se pudo abrir el archivo de credenciales." << endl;
@@ -64,7 +64,7 @@ int leer1(Doctores* medicos, int cantidad) {
     int pos1 = 0;
     string resultado1[3];
 
-    while (getline(texto, datorecu1) && pos1 < cantidad) {
+    while (getline(texto, datorecu1)) {
         int partes = Split(datorecu1, ' ', resultado1);
         if (partes >= 2) {
             medicos[pos1].nombre = resultado1[0];
@@ -76,6 +76,42 @@ int leer1(Doctores* medicos, int cantidad) {
 
     texto.close();
     return pos1;
+}
+
+int leerCita(Cita* citas) {
+    ifstream archivo("RegistroCitas.txt");
+    if (!archivo) {
+        cout << "No se pudo abrir el archivo de citas." << endl;
+        return 0;
+    }
+
+    if (citas == nullptr) {
+        string linea;
+        int contador = 0;
+        while (getline(archivo, linea)) contador++;
+        archivo.close();
+        return contador;
+    }
+
+    string datorecu;
+    int pos = 0;
+    string resultado[6];
+
+    while (getline(archivo, datorecu)) {
+        int partes = Split(datorecu, ',', resultado);
+        if (partes >= 5) {
+            citas[pos].dia = stoi(resultado[0]);
+            citas[pos].mes = stoi(resultado[1]);
+            citas[pos].anio = stoi(resultado[2]);
+            citas[pos].hora = resultado[3];
+            citas[pos].doctor = resultado[4];
+            citas[pos].cedula = resultado[5];
+            pos++;
+        }
+    }
+
+    archivo.close();
+    return pos;
 }
 
 #endif

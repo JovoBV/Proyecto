@@ -54,7 +54,7 @@ void mostrarCalendario(int day, int *diasMes) {
     for (int d = 1; d <= days_in_month[mes-1]; d++) {
         // Resaltar el día actual
         if (d == day) {
-            cout << "\033[31m[" << (d < 10 ? "" : "") << d << "]\033[0m ";
+            cout << "[" << (d < 10 ? "" : "") << d << "]";
         } else {
             cout << (d < 10 ? " " : "") << d << " ";
         }

@@ -4,6 +4,8 @@
 #include <string>
 #include <fstream>
 #include "agendarhorarios.h"
+#include "Datos.h"
+#include "ValidarCitas.h"
 
 using namespace std;
 
@@ -31,9 +33,10 @@ void agendarEspecialidad(Cita *nuevaCita) {
 
 void agendarCita(string id) {
     Cita nuevaCita;
-
+    char opc;
     agendarEspecialidad(&nuevaCita);
-    ofstream archivo("RegistroCitas.txt", ios::app);
+    if (!validarCita(id, nuevaCita)) {
+        ofstream archivo("RegistroCitas.txt", ios::app);
     if (archivo.is_open()) {
         archivo << nuevaCita.dia << "," << nuevaCita.mes << "," << nuevaCita.anio
                 << "," << nuevaCita.hora
@@ -44,6 +47,25 @@ void agendarCita(string id) {
     } else {
         cout << "Error al abrir el archivo para guardar la cita." << endl;
     }
+    } else {
+        cout << "Agendamiento no disponible." << endl;
+        do {
+            cout << "Desea intentar agendar otra cita? (s/n): ";
+            cin >> opc;
+            if (opc != 's' && opc != 'n') {
+                cout << "Opcion no valida. Intente de nuevo." << endl;
+            }
+        } while (opc != 's' && opc != 'n');
+        if (opc == 's') {
+            agendarCita(id);
+        } else {
+            cout << "Saliendo del sistema de citas." << endl;
+            return;
+        }
+        
+    }
+    
+    
     
 }
 

@@ -5,6 +5,7 @@
 #include "AgendarCita.h"
 using namespace std;
 void menu(string id){
+
 int opcion;
     do {
         cout << "--- Agenda de Citas Medicas ---" << endl;

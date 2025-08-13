@@ -38,7 +38,7 @@ void horarios(int casoEspecialidad, Cita *nuevaCita) {
     
     const int MAX_DOCTORES = 10;
     Doctores medicos[MAX_DOCTORES];
-    int total_Doctores = leer1(medicos, MAX_DOCTORES);
+    int total_Doctores = leerDoc(medicos);
     if (total_Doctores == 0) {
         cout << "Error al cargar los doctores." << endl;
     }
@@ -96,12 +96,11 @@ void horarios(int casoEspecialidad, Cita *nuevaCita) {
         cout << "Opcion no valida. Intente de nuevo." << endl;
     } } while (opcion < 1 || opcion > 7);
     
-    
-    cout << "Cita agendada con el Dr. "
+    cout << "Agendando cita con el Dr. "
         << medicos[docDiscponible[medico-1]].nombre << " "
         << medicos[docDiscponible[medico-1]].apellido
         << " el dia " << dia << "/" << mes << "/" << anio
-        << " a las " << horarios[opcion-1] << endl;
+        << " a las " << horarios[opcion-1] <<" ...\n"<< endl;
 
     nuevaCita->dia = dia;
     nuevaCita->mes = mes;
