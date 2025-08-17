@@ -11,26 +11,26 @@ using namespace std;
 
 void cancelarCita(string id) {
     int citaNumero;
-    ifstream archivo("C:\\Users\\Jovo\\Documents\\GitHub\\Proyecto\\archivos\\RegistroCitas.txt");
+    ifstream archivo("archivos/RegistroCitas.txt");
     if (!archivo.is_open()) {
         cout << "Error al abrir el archivo de citas." << endl;
         return;
     }
 
     // Mostrar las citas del usuario antes de cancelar
-    cout << "Citas agendadas para la cédula: " << id << endl;
+    cout << "Citas agendadas para la cedula: " << id << endl;
     mostrarCitas(id);  // Mostrar todas las citas para la cédula
 
     // Solicitar el número de cita a cancelar
     do {
-        cout << "Ingrese el número de la cita que desea cancelar: ";
+        cout << "Ingrese el numero de la cita que desea cancelar: ";
         cin >> citaNumero;
         if (citaNumero <= 0) {
             cout << "Numero de cita invalido. Intente nuevamente." << endl;
         }
     } while (citaNumero <= 0);
 
-    ofstream tempArchivo("Temporal.txt");
+    ofstream tempArchivo("archivos/Temporal.txt");
     string linea;
     bool encontrado = false;
     int contadorCita = 1;  // Contador para identificar la cita por número
@@ -63,8 +63,8 @@ void cancelarCita(string id) {
     tempArchivo.close();
 
     // Reemplazar el archivo original por el temporal
-    remove("RegistroCitas.txt");
-    rename("Temporal.txt", "RegistroCitas.txt");
+    remove("archivos/RegistroCitas.txt");
+    rename("archivos/Temporal.txt", "archivos/RegistroCitas.txt");
 
     if (encontrado) {
         cout << "Cita cancelada exitosamente." << endl;

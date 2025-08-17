@@ -33,6 +33,8 @@ void mostrarCitas(string cedula) {
   }
 
   if (!flag) cout << "No hay citas agendadas para la cedula " << cedula << endl;
+
+  delete[] citasRegistradas;
   return;
 }
 
