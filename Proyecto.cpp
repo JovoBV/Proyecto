@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <string>
 #include "modulos/Login.h"
@@ -15,7 +14,6 @@ int main() {
     if (login(&identificacion)) {
         menu(identificacion);
     }
-
     
     cin.ignore();
     cin.get();
